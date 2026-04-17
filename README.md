@@ -1,2 +1,3 @@
 # documentmanager
-this is a frontend documentmanager with a blue navbar,sidebranch and workspace coded with ai and coding documentation
+This is a frontend-based document manager featuring a structured layout with a navigation bar, sidebar, and workspace.
+The project focuses on simplicity, modular thinking, and iterative development, combining AI-assisted coding with manual system design and documentation.
