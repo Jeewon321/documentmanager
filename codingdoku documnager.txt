@@ -1,0 +1,68 @@
+08.05.2026 
+
+1.	Bug: falscher import von js und css file 
+	Ursache: falsche referenz der datei 
+	fix: saubere pfadstruktur hergestellt
+	
+2. 	Bug: zugriff auf localhost gescheitert 
+	Ursache: falsche dateipfade führten zu nx domain error 
+	fix: random json file gelöscht  
+
+09.05.2026 
+
+3.	Bug: doppelter code im scope besonders wiederholungen im code zu überschriebungen 
+	Ursache: code übernommen der mvp und nicht selbst gecoded 
+	Fix: neuer code mit weniger wiederholung 
+
+4.	Bug: Buttons funktionieren nicht mehr nach software umstrukturierung
+	ursache: Uncaught ReferenceError ReferenceError: solveSimpleChallenge is not defined at onload 
+	fix: type module im js html import hat fehler verursacht 
+
+11.05.2026 
+
+6.	Bug: Login existiert noch nicht 
+	Ursache: MVP ist noch nicht an der Stelle ausgereift
+
+12.05.2026 
+
+7.	Bug: Login form öffnet notification history
+	Ursache:  probleme mit der integrationen zwischen zwei komponeneten, die sich überschreiben 7
+	fix: richtiges modal hinzugefügt 
+
+8.	Bug: Login zum testen aufgebaut mit admin 
+	ursache: user testing 
+	fix: abfrage gehört ins backend zeile 136
+
+17.05.2026 
+
+9.	Bug:falsche environment in node anstatt in live server 
+	ursache: mehrere environment fehler und falsche cofiguration
+	fix: pathway über npx live server 8080 oder go live 5050
+
+10. 	bug: uncaught errror in javascript code 
+	ursache: doppelte code blöcke und falsche verschachtelungen 
+	fix: durch ai code explainer den code paresed und umgeschrieben für passsende iteration 
+
+11.	bug: css war falsch bzw ist noch nicht anzeigbar 
+	ursache: übergang vom static state zum dynamical state 
+	fix: neue codierung aber noch nicht anzeigbar 
+
+12. 	bug: json schemestor not found
+	ursache: schema nicht installiert/ ursache nicht bekannt 
+	fix: json library muss installiert werden 
+
+13. 	bug: git muss mit gitignore konfiguriert werden 
+	ursache: neue respitory angelegt wurde aber nie mit dem programm gearbeitet wurde
+	fix: gitignore einfügen 
+
+20.05.2026 
+
+14. 	bug: login modal funktioniert nicht 
+	ursache: fehlender api call 
+	fix. ein api call muss eingefügt werden für die modulare Backendprogrammierung
+
+15. 	bug: modale und sidebar laufen in der frontend nicht 
+	ursache: programmierungs architektur überdenken 
+	fix: abwägen der architekturentscheidung 
+
+16. 

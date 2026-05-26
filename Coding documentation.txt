@@ -1,0 +1,32 @@
+Coding documentation 
+
+26.11.2025 = Header und Seachbar mockup 
+30.11.2025 = Elemente der Navbar zugefügt nur Html
+01.12.2025 = Elemente bearbeiten mit html und css navbar aufbauen 
+07.12.2025 = Navbar und überschrift fertig planung für den drag und drop 
+25.01.2026 = erstellung eines drag znd drop&feldes
+05.02.2026 = Interaktivitöt der navbar buttons und coding der einzelnen workspace buttons abgeschlossen 
+09.02.2026 = draggable items und klassen umgeschriebene entspricht nicht mehr scope vom projekt (Missengineering der einzelnen Bestandteile),
+subview system dummy funktioniert todo für die nächsten tage 
+
+-subview systeme in filesystem umwandeln,back end forth views einbauen 
+- workspace die buttons lokal rendern damit ein duales system entsteht 
+  
+13.02.2026 coding der subbbranches mehr debugging als coding es liegen eher html fehler vor als javascript fehler die webapp mimmt gestalt an und ist durch ein paar designfehler zerschossen aber das ist kein problem
+
+todo 
+
+- fixen der verschachtelung sidebar muss unabhängig von der workspace stehen 
+- saubere trennung für das adden und löschen durch die branches 
+-user soll felder aufmachen können die sich durch die subviews öffnen und damit listen anlegen       
+
+
+14.02.2026 blackbox ai hat meinen code gefixt nachedem ich es verbockt habe und gezeigt habe das ich an mir selbst zweifele. Ich habe den tipp bekommen produktionscode von mc martin
+
+16.02.2026 mvp coding ist fertig jetzt auf backend handling ansetzen  
+
+todo ist node.js durch express. js oder python flask 
+
+laut blackboxai lohnt sich node.js mehr 
+
+heute sind notificationbutton und notification history enstatnden mit vielen bugs und das debuggen und fixen hat zeit gebraucht und mit blackbox ai auch versucht die fehler zu finden und in devops zu eleminieren. zudem ist die log entstanden für die history for notificatin.                                                                                                                
