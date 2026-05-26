@@ -4,138 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentmanager</title>
-    <style>
-        /* General Reset */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
 
-        /* Navbar Styling */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: aqua;
-            padding: 10px 20px;
-        }
-
-        /* Container Styling */
-        .container {
-            display: flex;
-            height: calc(100vh - 60px); /* Adjust for navbar height */
-        }
-
-        .sidebar {
-            width: 250px;
-            padding: 28px;
-            background: #111;
-            color: white;
-            overflow-y: auto; /* In case of long content */
-        }
-
-        .workspace {
-            flex: 1;
-            padding: 20px;
-            border: 2px dashed #ccc;
-        }
-
-        .nav-buttons button {
-            margin: 0 10px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        .nav-buttons button:hover {
-            background-color: #ddd;
-        }
-
-        .search-input {
-            padding: 5px;
-            font-size: 16px;
-        }
-
-        .search-button {
-            padding: 5px;
-            cursor: pointer;
-        }
-
-        .subbranch {
-            padding-left: 20px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            display: none;
-            background: #444;
-            cursor: pointer;
-            margin-bottom: 3px;
-        }
-
-        .subbranch:hover {
-            background: #555;
-        }
-
-        .module.active .subbranch {
-            display: block;
-        }
-
-        /* Basic responsiveness */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none; /* Versteckt per default */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.4); /* Dunkler Overlay */
-        }
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover {
-            color: black;
-        }
-        #historyList {
-            max-height: 200px;
-            overflow-y: auto;
-            text-align: left;
-        }
-    </style>
+    <link rel="stylesheet" href="documanagernewstylesheet.css">
 </head>
+
+
 <body>
+
+    <!---Das ist die Headerbuttonleiste--> 
     <nav class="navbar">
         <h1>My Documentmanager</h1>
         <div class="nav-buttons">
-            <button>home</button>
-            <button>about</button>
-            <button>faq&support</button>
-            <button>contact</button>
-            <button>login</button>
+            <button id="data-page">home</button>
+            <button id="data-page">about</button>
+            <button id="data-page">faq&support</button>
+            <button id="data-page">contact</button>
+            <button id="data-page">login</button>
         </div>
+                
+            
+
+        <!--Das ist die Search Container Rahmung-->
         <div class="search-container">
             <form action="/search" method="GET">
                 <input type="text" placeholder="Search..." name="query" class="search-input">
@@ -144,25 +33,18 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="sidebar" id="sidebar">
-            <h3>Module</h3>
-            <div class="module" data-key="projekt">
-                Projekt
-                <div class="subbranch" data-key="projekt1">projekt1</div>
-                <div class="subbranch" data-key="projekt2">projekt2</div>
-            </div>
-            <div class="module" data-key="dokument">
-                Dokument
-                <div class="subbranch" data-key="dokument1">Dokument1</div>
-            </div>
-            <div class="module" data-key="personal">
-                Personal
-                <div class="subbranch" data-key="personal1">Personal 1</div>
-                <div class="subbranch" data-key="personal2">Personal 2</div>
-            </div>
-        </div> <!-- End sidebar -->
+    <!--Das ist die Struktur für die sidebar--> 
+    <div class="container" style="display: flex; border: 2px solid red;">
+    <div id="sidebar" style="width: 200px; background: lightblue; border: 2px solid blue;">
+        TEST SIDEBAR
+    </div>
+    <div id="workspace" style="flex: 1; background: lightgreen; border: 2px solid green;">
+        TEST WORKSPACE
+    </div>
+</div>   
+         <!-- Ende sidebar -->
 
+        <!--Lokales Workspace-->
         <main class="workspace" id="workspace">
             <h3>Workspace</h3>
             <button id="notificationBtn">Notification</button>
@@ -170,6 +52,17 @@
             <button>Support</button>
             <button>Teammanagement</button>
         </main>
+    </div>
+
+    <!--modal für loginpage-->
+   <div id="login" class="modal">
+    <div class="modal-content">
+        <input type="text" id="username" placeholder="username">
+        <input type="password" id="password" placeholder="password">
+        <button id="submitlogin"> login</button>
+    </div>
+</div>
+
     </div>
 
     <!-- Modal für Notification-Status -->
@@ -183,180 +76,7 @@
         </div>
     </div>
 
-    <script>
-        // Notification History
-        let notificationHistory = [];
-        try {
-            const stored = localStorage.getItem('notificationHistory');
-            notificationHistory = stored ? JSON.parse(stored) : [];
-        } catch (e) {
-            console.warn('Error loading history from localStorage:', e);
-            notificationHistory = [];
-        }
-
-        function addToHistory(event) {
-            const timestamp = new Date().toLocaleTimeString();
-            notificationHistory.push(`${timestamp}: ${event}`);
-            try {
-                localStorage.setItem('notificationHistory', JSON.stringify(notificationHistory));
-            } catch (e) {
-                console.warn('Error saving to localStorage:', e);
-            }
-            updateHistoryDisplay();
-        }
-
-        function updateHistoryDisplay() {
-            const historyList = document.getElementById('historyList');
-            if (historyList) {
-                historyList.innerHTML = notificationHistory.map(item => `<li>${item}</li>`).join('');
-            } else {
-                console.error('historyList element not found!');
-            }
-        }
-
-        // Initial load
-        updateHistoryDisplay();
-
-        // Navbar button click handlers (modifiziert: jetzt funktional mit Content-Loading)
-        const navButtons = document.querySelectorAll('.nav-buttons button');
-        navButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const content = {
-                    home: '<h3>Home</h3><p>Willkommen im Documentmanager! Hier kannst du Dokumente verwalten.</p>',
-                    about: '<h3>About</h3><p>Dies ist ein einfacher Documentmanager-Prototyp.</p>',
-                    'faq&support': '<h3>FAQ & Support</h3><p>Häufige Fragen: Wie suche ich? Nutze die Suchleiste oben.</p>',
-                    contact: '<h3>Contact</h3><p>Email: example@domain.com</p>',
-                    login: '<h3>Login</h3><form><input type="text" placeholder="Username"><input type="password" placeholder="Password"><button>Login</button></form>'
-                };
-                workspace.innerHTML = content[btn.textContent.toLowerCase().replace('&', '').replace(' ', '')] || '<p>Seite nicht gefunden.</p>';
-            });
-        });
-
-        // Neue Event-Listener für Workspace-Buttons (hinzugefügt)
-        document.querySelectorAll('#workspace button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (btn.textContent === 'Messenger') {
-                    workspace.innerHTML = '<h3>Messenger</h3><p>Hier könnten Nachrichten stehen.</p><input type="text" placeholder="Nachricht..."><button>Senden</button>';
-                } else if (btn.textContent === 'Support') {
-                    workspace.innerHTML = '<h3>Support</h3><p>Kontakt: support@domain.com</p>';
-                } else if (btn.textContent === 'Teammanagement') {
-                    workspace.innerHTML = '<h3>Teammanagement</h3><ul><li>Teammitglied 1</li><li>Teammitglied 2</li></ul>';
-                }
-                // Notification bleibt wie gehabt (hat schon Funktionalität)
-            });
-        });
-
-        // Workspace and subviews setup
-        const workspace = document.getElementById('workspace');
-        const subviews = {
-            projekt1: '<p>Content for Projekt 1: Details about the first project.</p>',
-            projekt2: '<p>Content for Projekt 2: Details about the second project.</p>',
-            dokument1: '<p>Content for Dokument 1: Document details here.</p>',
-            personal1: '<p>Content for Personal 1: Employee info.</p>',
-            personal2: '<p>Content for Personal 2: More employee info.</p>'
-        };
-
-        // Neuer Handler für Search-Form (hinzugefügt: client-seitig)
-        document.querySelector('.search-container form').addEventListener('submit', (e) => {
-            e.preventDefault(); // Verhindert POST
-            const query = e.target.query.value.toLowerCase();
-            const results = Object.keys(subviews).filter(key => key.toLowerCase().includes(query));
-            workspace.innerHTML = `<h3>Suchergebnisse für "${query}"</h3><ul>${results.map(r => `<li>${r}</li>`).join('') || '<li>Keine Ergebnisse.</li>'}</ul>`;
-        });
-
-        // Module click: Toggle subbranches
-        document.querySelectorAll('.module').forEach(mod => {
-            mod.addEventListener('click', (e) => {
-                if (e.target.classList.contains('subbranch')) return; // Prevent toggle if clicking subbranch
-                mod.classList.toggle('active');
-            });
-        });
-
-        // Subbranch click: Load content into workspace
-        document.querySelectorAll('.subbranch').forEach(sub => {
-            sub.addEventListener('click', () => {
-                const key = sub.getAttribute('data-key');
-                const content = subviews[key];
-                if (content) {
-                    workspace.innerHTML = `<h3>${sub.textContent}</h3>${content}`;
-                } else {
-                    workspace.innerHTML = `<h3>${sub.textContent}</h3><p>Error: Content not found for ${key}.</p>`;
-                }
-            });
-        });
-
-        // Notification Button functionality
-        const modal = document.getElementById('notificationModal');
-        const statusText = document.getElementById('statusText');
-        const closeBtn = document.querySelector('.close');
-
-        if (modal && statusText && closeBtn) {  // Sicherheitsprüfung
-            document.getElementById('notificationBtn').addEventListener('click', function() {
-                // Modal öffnen
-                modal.style.display = 'block';
-                addToHistory('Modal opened');
-
-                // Status prüfen und anzeigen
-                if (!('Notification' in window)) {
-                    statusText.textContent = 'This browser does not support Notifications.';
-                    addToHistory('Browser does not support notifications');
-                    return;
-                }
-                if (Notification.permission === 'granted') {
-                    statusText.textContent = 'Notifications are allowed. Sending notification...';
-                    addToHistory('Notification sent');
-                    showNotification();
-                } else if (Notification.permission === 'denied') {
-                    statusText.textContent = 'Notifications are blocked. Please allow in browser settings.';
-                    addToHistory('Notifications blocked');
-                } else {
-                    statusText.textContent = 'Requesting permission...';
-                    addToHistory('Requesting permission');
-                    Notification.requestPermission().then(function(permission) {
-                        if (permission === 'granted') {
-                            statusText.textContent = 'Permission granted! Sending notification...';
-                            addToHistory('Permission granted and notification sent');
-                            showNotification();
-                        } else {
-                            statusText.textContent = 'Permission denied.';
-                            addToHistory('Permission denied');
-                        }
-                    });
-                }
-            });
-
-            // Modal schließen
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
-                addToHistory('Modal closed');
-            };
-            window.onclick = function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    addToHistory('Modal closed by outside click');
-                }
-            };
-        } else {
-            console.error('Modal elements not found!');
-        }
-
-        function showNotification() {
-            const notification = new Notification('Hello from Documentmanager!', {
-                body: 'This is a test notification from your Workspace.',
-                icon: 'https://via.placeholder.com/64'
-            });
-            notification.onclick = function() {
-                window.focus();
-                notification.close();
-                addToHistory('Notification clicked');
-            };
-            // Neu: Fallback, falls Notification fehlschlägt (hinzugefügt)
-            setTimeout(() => {
-                if (!notification || notification.closed) {
-                    alert('Notification gesendet! (Fallback, da Browser es nicht unterstützt)');
-                }
-            }, 1000);
-        }
-    </script>
+  <!--Import für das funktionale Script-->  
+  <script src="documanagernewjavascriptassets.js"></script>
 </body>
 </html>
