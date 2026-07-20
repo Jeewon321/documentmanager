@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentmanager</title>
+
+    <link rel="stylesheet" href="documanagernewstylesheet.css">
+</head>
+
+
+<body>
+
+    <!---Das ist die Headerbuttonleiste--> 
+    <nav class="navbar">
+        <h1>My Documentmanager</h1>
+        <div class="nav-buttons">
+            <button id="data-page">home</button>
+            <button id="data-page">about</button>
+            <button id="data-page">faq&support</button>
+            <button id="data-page">contact</button>
+            <button id="data-page">login</button>
+        </div>
+                
+            
+
+        <!--Das ist die Search Container Rahmung-->
+        <div class="search-container">
+            <form action="/search" method="GET">
+                <input type="text" placeholder="Search..." name="query" class="search-input">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!--Das ist die Struktur für die sidebar--> 
+    <div class="container" style="display: flex; border: 2px solid red;">
+    <div id="sidebar" style="width: 200px; background: lightblue; border: 2px solid blue;">
+        TEST SIDEBAR
+    </div>
+    <div id="workspace" style="flex: 1; background: lightgreen; border: 2px solid green;">
+        TEST WORKSPACE
+    </div>
+</div>   
+         <!-- Ende sidebar -->
+
+        <!--Lokales Workspace-->
+        <main class="workspace" id="workspace">
+            <h3>Workspace</h3>
+            <button id="notificationBtn">Notification</button>
+            <button>Messenger</button>
+            <button>Support</button>
+            <button>Teammanagement</button>
+        </main>
+    </div>
+
+    <!--modal für loginpage-->
+   <div id="login" class="modal">
+    <div class="modal-content">
+        <input type="text" id="username" placeholder="username">
+        <input type="password" id="password" placeholder="password">
+        <button id="submitlogin"> login</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Modal für Notification-Status -->
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Notification Status</h2>
+            <p id="statusText">Checking...</p>
+            <h3>Notification History</h3>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+
+  <!--Import für das funktionale Script-->  
+  <script src="documanagernewjavascriptassets.js"></script>
+</body>
+</html>
