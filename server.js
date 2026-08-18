@@ -12,11 +12,11 @@ app.use(express.json());   // Versteht JSON im Request
 
 // Zeile 4: Login Endpunkt
 app.post('/api/login', (req, res) => {
-  // req.body enthält email + passwort vom Frontend
-  const {email, password } = req.body;
+  // req.body enthält username + passwort vom Frontend
+  const { email, password } = req.body;
   
   // Prüfen (hardcoded, später aus Datenbank)
-  if (email === 'admin@example.com' && password === 'admin') {
+  if (email === 'admin@admin' && password === 'admin') {
     // Token erstellen
     const token = jwt.sign(
       { email: email },  // Was im Token steckt
