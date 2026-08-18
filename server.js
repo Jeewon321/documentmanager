@@ -13,13 +13,13 @@ app.use(express.json());   // Versteht JSON im Request
 // Zeile 4: Login Endpunkt
 app.post('/api/login', (req, res) => {
   // req.body enthält username + passwort vom Frontend
-  const { username, password } = req.body;
+  const { email, password } = req.body;
   
   // Prüfen (hardcoded, später aus Datenbank)
-  if (username === 'admin' && password === 'admin') {
+  if (email === 'admin@admin' && password === 'admin') {
     // Token erstellen
     const token = jwt.sign(
-      { name: username },  // Was im Token steckt
+      { email: email },  // Was im Token steckt
       'mein_geheimer_key', // Unterschrift
       { expiresIn: '2h' }  // Gültigkeit
     );
