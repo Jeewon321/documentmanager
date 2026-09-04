@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<link rel="shortcut icon" href="">
+
+    <div id="popup" class="popup">
+        <div class="popup -content">
+        <h2>This is your crud table</h2>
+        <p>here you can create,read,delete and update your projects</p>
+
+
+        <button onclick="openCreate()">create</button>
+        <button>read</button>
+        <button>update</button>
+        <button>delete</button>
+
+        <!--Subfenster-->
+        <div id="create-window" style="display:none">
+            <h2>Speichern
+            <button onclick="closeCreate()" style="float:right">X</button></h2>
+            <input type="text">
+            <button>Speichern</button>
+            
+
+
+            </div>
+        </div>
+
+        <script>
+            //ruft das window für die speicherung auf
+            function openCreate() {
+                document.getElementById("create-window").style.display="block";
+            };
+
+            //schliesst das fenster wieder
+            function closeCreate(){
+                document.getElementById("create-window").style.display="none";
+            };
+        </script>
+
+        </div>
+
+    </div>
+</body>
+</html>
