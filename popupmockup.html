@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <div id="popup" class="popup">
+        <div class="popup -content">
+        <h2>This is your crud table</h2>
+        <p>here you can create,read,delete and update your projects</p>
+
+
+        <button onclick="openCreate()">create</button>
+        <button onclick="openCreate()">read</button>
+        <button onclick="openCreate()">update</button>
+        <button onclick="openCreate()">delete</button>
+
+        <!--Subfenster-->
+        <div id="create-window" style="display:none">
+            <h2>Speichern</h2>
+            <input type="text">
+            <button>Speichern</button>
+            <button onclick="closeCreate()" >X</button>
+
+        <!--tabelle für die crud logik-->
+        <table border="1" id="table">
+            <tr><th>Table</th></tr>
+        </table>
+            
+
+
+            </div>
+        </div>
+
+        <script>
+            //ruft das window für die speicherung auf
+            function openCreate() {
+                document.getElementById("create-window").style.display="block";
+            };
+
+            //schliesst das fenster wieder
+            function closeCreate(){
+                document.getElementById("create-window").style.display="none";
+            };
+
+            //logik für die tabelle 
+            function createProject(){
+            let name = document.querySelector("#create-window input").value;
+            let table = document.getElementById("table");
+                table.innerHTML += `<tr><td>${name}</td></tr>`;
+            closeCreate();
+            }
+
+            
+
+        </script>
+
+        </div>
+
+    </div>
+</body>
+</html>
